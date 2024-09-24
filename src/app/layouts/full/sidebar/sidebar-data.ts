@@ -10,10 +10,15 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'Tracking Money',
   },
   {
-    displayName: 'Badge',
+    displayName: 'Tracking Money',
+    iconName: 'coins',
+    route: '/ui-components/tracking-money',
+  },
+  {
+    displayName: 'Badgee',
     iconName: 'rosette',
     route: '/ui-components/badge',
   },

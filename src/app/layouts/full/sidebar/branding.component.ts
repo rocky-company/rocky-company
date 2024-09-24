@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     <div class="branding">
       <a href="/">
         <img
-          src="./assets/images/logos/dark-logo.svg"
+          src="./assets/images/logos/logo1.svg"
           class="align-middle m-2"
-          alt="logo"
+          alt="logo" width="200" height="200"
         />
       </a>
     </div>

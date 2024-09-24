@@ -6,11 +6,16 @@ import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
+import { AppTrackingMoney } from './tracking-money/tracking-money.component';
 
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: 'tracking-money',
+        component: AppTrackingMoney,
+      },
       {
         path: 'badge',
         component: AppBadgeComponent,
