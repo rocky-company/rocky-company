@@ -1,7 +1,7 @@
 export interface GastoDTO {
   nombre: string,
-  costoDelGasto: number,
-  fechaDelGasto: Date;
-  categoria: string,
-  lugar: string,
+  CostoDelGasto: number,
+  //FechaDelGasto: Date;
+  Categoria: string,
+  Lugar: string,
 }

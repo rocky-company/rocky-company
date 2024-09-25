@@ -15,25 +15,25 @@
         </div>
 
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="costoDelGasto">Costo Del Gasto</mat-label>
+          <mat-label class="f-w-600 m-b-8 d-block" for="CostoDelGasto">Costo Del Gasto</mat-label>
           <mat-form-field appearance="outline" class="w-100">
-            <input matInput placeholder="5000 " [(ngModel)]="newGasto.costoDelGasto" name="costoDelGasto" required />
+            <input matInput placeholder="5000 " type="number" [(ngModel)]="newGasto.CostoDelGasto" name="CostoDelGasto" required />
           </mat-form-field>
         </div>
 
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="fechaDelGasto">Día que realizo el gasto</mat-label>
+        <!-- <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block" for="FechaDelGasto">Día que realizo el gasto</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input matInput type="date" [(ngModel)]="newGasto.fechaDelGasto" name="fechaDelGasto" required />
+            <input matInput type="date" [(ngModel)]="newGasto.FechaDelGasto" name="FechaDelGasto" required />
           </mat-form-field>
-        </div>
+        </div> -->
 
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="categoria">Categoria</mat-label>
+          <mat-label class="f-w-600 m-b-8 d-block" for="Categoria">Categoria</mat-label>
           <mat-form-field appearance="outline" class="w-100">
-            <mat-select [(value)]="selectedCategoria" [(ngModel)]="newGasto.categoria" name="categoria" >
+            <mat-select [(value)]="selectedCategoria" [(ngModel)]="newGasto.Categoria" name="Categoria" >
               @for(option of categoria; track option.value) {
-              <mat-option [value]="option.value">{{
+              <mat-option [value]="option.viewValue">{{
                 option.viewValue
               }}</mat-option>
               }
@@ -42,11 +42,11 @@
         </div>
 
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="lugar">Lugar</mat-label>
+          <mat-label class="f-w-600 m-b-8 d-block" for="Lugar">Lugar</mat-label>
           <mat-form-field appearance="outline" class="w-100">
-            <mat-select [(value)]="selectedlugar" [(ngModel)]="newGasto.lugar" name="lugar">
+            <mat-select [(value)]="selectedlugar" [(ngModel)]="newGasto.Lugar" name="Lugar">
               @for(option of lugar; track option.value) {
-              <mat-option [value]="option.value">{{
+              <mat-option [value]="option.viewValue">{{
                 option.viewValue
               }}</mat-option>
               }
@@ -57,7 +57,6 @@
 
       <div class="m-t-12">
         <button mat-flat-button color="primary" class="m-r-8"  type="submit">Submit</button>
-        <button mat-stroked-button color="warn">Cancel</button>
       </div>
     </form>
   </mat-card-content>

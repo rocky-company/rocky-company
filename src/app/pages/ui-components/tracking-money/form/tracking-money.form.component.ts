@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { GastoDTO } from 'src/app/services/baptiste/dto/gasto.dto';
+import { GastosService } from 'src/app/services/baptiste/gastos.service';
 
 @Component({
   selector: 'app-tracking-money-form',
   templateUrl: './tracking-money.form.component.html',
 })
 export class FormTrackingMoney {
+  constructor(private gastosService: GastosService) {}
+
   lugar: Food[] = [
     { value: 'steak-0', viewValue: 'Mexico' },
     { value: 'pizza-1', viewValue: 'Mumbai' },
@@ -24,18 +27,27 @@ export class FormTrackingMoney {
 
   newGasto: GastoDTO = {
     nombre: '',
-    costoDelGasto: 0,
-    fechaDelGasto: new Date(),
-    categoria: '',
-    lugar: '',
+    CostoDelGasto: 0,
+    //FechaDelGasto: new Date(),
+    Categoria: '',
+    Lugar: '',
   };
 
   @Output() onSubmit = new EventEmitter<any>();
 
   addNewGasto() {
     this.onSubmit.emit(this.newGasto);
-
     console.log(this.newGasto);
+
+    this.gastosService.crearGasto(this.newGasto).subscribe({
+      next: (response) => {
+        console.log('Respuesta del API Baptiste: ', response);
+      },
+
+      error: (error) => {
+        console.log('Error al consumir el API Baptiste: ', error);
+      }
+    });
   }
 }
 

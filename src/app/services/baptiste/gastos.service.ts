@@ -13,6 +13,7 @@ export class GastosService {
 
   // Crear gasto.
   crearGasto(gasto: GastoDTO): Observable<any> {
+    console.log('Hi, crearGasto(). GASTO RECIBIDO', gasto)
     return this.http.post<any>(this.apiUrl, gasto)
   }
 }

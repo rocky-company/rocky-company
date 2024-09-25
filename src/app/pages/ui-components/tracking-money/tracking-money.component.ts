@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { GastosService } from 'src/app/services/baptiste/gastos.service';
 
 @Component({
   selector: 'app-tracking-money',
   templateUrl: './tracking-money.component.html',
 })
 export class AppTrackingMoney implements OnInit {
-  constructor(private gastosService: GastosService) {}
+  constructor() {}
 
   // ngOnInit se ejecuta después de que Angular construya completamente el componente
   ngOnInit(): void {

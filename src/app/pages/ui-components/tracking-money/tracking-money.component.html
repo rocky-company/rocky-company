@@ -3,6 +3,8 @@
   <button (click)="toggleForm()" mat-flat-button color="primary">
     Crear Gasto
   </button>
+  <br>
+  <button mat-flat-button color="primary-red" *ngIf="showForm" (click)="toggleForm()">Cancel</button>
 </mat-card>
 
 <app-tracking-money-form *ngIf="showForm"></app-tracking-money-form>
