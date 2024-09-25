@@ -1,70 +1,150 @@
-<h1>Hola es es mi primer componente ♥</h1>
-<pre>
-  {{goApi$ | async | json}}
-</pre>
-
-<mat-card class="cardWithShadow theme-card">
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Registrar un nuevo gasto.</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content class="b-t-1">
-    <form>
-      <div class="row">
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Nombre Del Gasto</mat-label>
-          <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input matInput placeholder="Takis de fuego " />
-          </mat-form-field>
-        </div>
-
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Costo Del Gasto</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <input matInput placeholder="5000 " />
-          </mat-form-field>
-        </div>
-
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Día que realizo el gasto</mat-label>
-          <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input matInput placeholder="Por defecto hoy " />
-          </mat-form-field>
-        </div>
-
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Categoria</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select [(value)]="selectedCategoria">
-              @for(option of categoria; track option.value) {
-              <mat-option [value]="option.value">{{
-                option.viewValue
-              }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Lugar</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select [(value)]="selectedCity">
-              @for(option of city; track option.value) {
-              <mat-option [value]="option.value">{{
-                option.viewValue
-              }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="m-t-12">
-        <button mat-flat-button color="primary" class="m-r-8">Submit</button>
-        <button mat-stroked-button color="warn">Cancel</button>
-      </div>
-    </form>
-  </mat-card-content>
+<h1>Seguimiento de gastos.</h1>
+<mat-card>
+  <button (click)="toggleForm()" mat-flat-button color="primary">
+    Crear Gasto
+  </button>
 </mat-card>
 
+<app-tracking-money-form *ngIf="showForm"></app-tracking-money-form>
 
+<!-- Tabla de gastos.-->
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title>Table</mat-card-title>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource1" class="w-100">
+        <!-- Position Column -->
+        <ng-container matColumnDef="assigned">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"
+          >
+            Product
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-l-0">
+            <div class="d-flex align-items-center">
+              <div class="m-l-16">
+                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                  {{ element.uname }}
+                </h6>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+            Payment
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            @if(element.budget >= 160) {
+            <h6 class="mat-body-1 f-s-16 m-b-4">
+              <span class="text-dark f-w-600">${{ element.budget }} </span>/ 499
+            </h6>
+            <span class="f-s-14 f-w-500 d-block m-b-4">Full paid</span>
+            <mat-progress-bar
+              mode="determinate"
+              value="40"
+              color="primary"
+            ></mat-progress-bar>
+            } @else if(element.budget > 119) {
+            <h6 class="mat-body-1 f-s-16 m-b-4">
+              <span class="text-dark f-w-600">${{ element.budget }} </span>/ 499
+            </h6>
+            <span class="f-s-14 f-w-500 d-block m-b-4">Partially paid</span>
+            <mat-progress-bar
+              mode="determinate"
+              value="40"
+              color="accent"
+            ></mat-progress-bar>
+            } @else if(element.budget < 100) {
+            <h6 class="mat-body-1 f-s-16 m-b-4">
+              <span class="text-dark f-w-600">${{ element.budget }} </span>/ 499
+            </h6>
+            <span class="f-s-14 f-w-500 d-block m-b-4">Cancelled</span>
+            <mat-progress-bar
+              mode="determinate"
+              value="40"
+              color="warn"
+            ></mat-progress-bar>
+            }
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="priority">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+            Status
+          </th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.priority == 'cancelled') {
+            <span
+              class="bg-light-warning text-warning rounded f-w-600 p-6 p-y-4 f-s-12"
+            >
+              {{ element.priority | titlecase }}
+            </span>
+            } @if(element.priority == 'rejected') {
+            <span
+              class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12"
+            >
+              {{ element.priority | titlecase }}
+            </span>
+            } @if(element.priority == 'confirmed') {
+            <span
+              class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12"
+            >
+              {{ element.priority | titlecase }}
+            </span>
+            }
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="budget">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          ></th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

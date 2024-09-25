@@ -18,6 +18,7 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppTrackingMoney } from './tracking-money/tracking-money.component';
+import { FormTrackingMoney } from './tracking-money/form/tracking-money.form.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { AppTrackingMoney } from './tracking-money/tracking-money.component';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
+    FormTrackingMoney
   ],
 })
 export class UicomponentsModule {}
