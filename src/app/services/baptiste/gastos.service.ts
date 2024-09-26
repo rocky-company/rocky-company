@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GastoDTO } from './dto/gasto.dto';
+import { GastosDTO } from './dto/gastos.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ export class GastosService {
 
   // Crear gasto.
   crearGasto(gasto: GastoDTO): Observable<any> {
-    console.log('Hi, crearGasto(). GASTO RECIBIDO', gasto)
     return this.http.post<any>(this.apiUrl, gasto)
+  }
+
+  // Consumir todos los gatos registrados en la base de datos.
+  getAllGastos(): Observable<any> {
+    return this.http.get<GastosDTO>(this.apiUrl);
   }
 }
