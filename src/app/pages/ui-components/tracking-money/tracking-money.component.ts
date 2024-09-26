@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GastosDTO } from 'src/app/services/baptiste/dto/gastos.dto';
 import { GastosService } from 'src/app/services/baptiste/gastos.service';
+import { SnackBarComponent } from 'src/app/snack-bar-component/snack-bar-component.component';
 
 @Component({
   selector: 'app-tracking-money',
@@ -9,7 +11,7 @@ import { GastosService } from 'src/app/services/baptiste/gastos.service';
 export class AppTrackingMoney implements OnInit {
   gastos: GastosDTO[] = [];
 
-  constructor(private gastosService: GastosService) {}
+  constructor(private gastosService: GastosService, private snackBar: MatSnackBar,) {}
 
   // ngOnInit se ejecuta después de que Angular construya completamente el componente
   ngOnInit(): void {
@@ -20,10 +22,13 @@ export class AppTrackingMoney implements OnInit {
     this.gastosService.getAllGastos().subscribe({
       next: (response) => {
         this.gastos = response;
-        console.log(this.gastos);
       },
 
       error: (error) => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 10000,
+          data: { message: `Error consultando informacion. :(` },
+        });
         console.error('Error consultando informacion: ', error);
       },
     });
