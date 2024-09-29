@@ -7,6 +7,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { AppTrackingMoney } from './tracking-money/tracking-money.component';
+import { FormUpdateTrackingMoney } from './tracking-money/form-update/tracking-money.form-update.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -35,6 +36,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'tooltips',
         component: AppTooltipsComponent,
+      },
+      {
+        path: 'update',
+        component: FormUpdateTrackingMoney,
       },
     ],
   },

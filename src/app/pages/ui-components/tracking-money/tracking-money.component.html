@@ -1,7 +1,7 @@
 <h1>Seguimiento de gastos.</h1>
 <mat-card>
   <button (click)="toggleForm()" mat-flat-button color="primary">
-    Crear Gasto
+    Nuevo Gasto!!
   </button>
   <br />
   <button
@@ -14,7 +14,17 @@
   </button>
 </mat-card>
 
-<app-tracking-money-form *ngIf="showForm"></app-tracking-money-form>
+<h1>EDITAR PRUEBA BETA</h1>
+<mat-card>
+  <button (click)="edit()" mat-flat-button color="primary">
+    EDITAR button BETA
+  </button>
+</mat-card>
+
+<app-tracking-money-form
+  *ngIf="showForm"
+  (onSubmit)="onGastoAdded($event)"
+></app-tracking-money-form>
 
 <!-- Tabla Gastos registrados -->
 <mat-card class="w-100">
@@ -65,10 +75,26 @@
         </ng-container>
 
         <!-- FechaDelGasto Column-->
-        <ng-container matColumnDef="FechaDelGasto">
-          <th mat-header-cell *matHeaderCellDef>FechaDelGasto</th>
+        <ng-container matColumnDef="fecha_formateada">
+          <th mat-header-cell *matHeaderCellDef>Fecha del gasto</th>
           <td mat-cell *matCellDef="let element">
-            <p class="mb-0 fw-medium">{{ element.FechaDelGasto }}</p>
+            <p class="mb-0 fw-medium">{{ element.fecha_formateada }}</p>
+          </td>
+        </ng-container>
+
+         <!-- Acciones Column -->
+         <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <!-- Botón Editar -->
+            <!-- <button mat-icon-button color="primary" (click)="edit(element)">
+              <mat-icon>edit</mat-icon>
+            </button> -->
+
+            <!-- Botón Eliminar -->
+            <!-- <button mat-icon-button color="warn" (click)="edit(element)">
+              <mat-icon>delete</mat-icon>
+            </button> -->
           </td>
         </ng-container>
 

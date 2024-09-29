@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GastosDTO } from 'src/app/services/baptiste/dto/gastos.dto';
 import { GastosService } from 'src/app/services/baptiste/gastos.service';
@@ -13,12 +13,7 @@ export class AppTrackingMoney implements OnInit {
 
   constructor(private gastosService: GastosService, private snackBar: MatSnackBar,) {}
 
-  // ngOnInit se ejecuta después de que Angular construya completamente el componente
   ngOnInit(): void {
-    /*
-      Este método se usa comúnmente para realizar tareas de inicialización, como cargar datos desde un servicio,
-      configurar el componente o sus propiedades, y prepararlo para su uso.
-    */
     this.gastosService.getAllGastos().subscribe({
       next: (response) => {
         this.gastos = response;
@@ -29,15 +24,24 @@ export class AppTrackingMoney implements OnInit {
           duration: 10000,
           data: { message: `Error consultando informacion. :(` },
         });
-        console.error('Error consultando informacion: ', error);
       },
     });
   }
 
-  // Logica para mostrar formulario.
+  // Logica para mostrar formulario de creación.
   showForm = false;
   toggleForm() {
     this.showForm = !this.showForm; // Alterna la visibilidad del formulario
+  }
+
+  // Escucha el evento onSubmit emitido desde el subcomponente y actualiza el arreglo de gastos
+  onGastoAdded(newGasto: GastosDTO) {
+    this.gastos.push(newGasto);  // Añade el nuevo gasto al arreglo de gastos
+  }
+
+  // Logica para editar un gasto.
+  edit(/* gasto: any */){
+    console.log('Editando el siguiente gasto: ', /* gasto */);
   }
 
   // Nombre de cada columna en la tabla Gastos registrados.
@@ -47,6 +51,7 @@ export class AppTrackingMoney implements OnInit {
     'CostoDelGasto',
     'Categoria',
     'Lugar',
-    'FechaDelGasto',
+    'fecha_formateada',
+    'Acciones',
   ];
 }

@@ -2,7 +2,7 @@ export interface GastosDTO {
   ID: number,
   Nombre: string,
   CostoDelGasto: number,
-  FechaDelGasto: any;
+  fecha_formateada?: string;
   Categoria: string,
   Lugar: string,
 }

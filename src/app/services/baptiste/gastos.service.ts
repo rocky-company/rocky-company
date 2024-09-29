@@ -21,4 +21,9 @@ export class GastosService {
   getAllGastos(): Observable<any> {
     return this.http.get<GastosDTO>(this.apiUrl);
   }
+
+  // Editar gasto.
+  updateGasto(gasto: GastosDTO): Observable<any> {
+    return this.http.put<any>(this.apiUrl, gasto)
+  }
 }
