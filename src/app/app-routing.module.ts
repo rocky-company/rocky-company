@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
+      {
+        path: 'gastos',
+        loadChildren: () =>
+          import('./pages/ui-components/gasto/gastos.module').then((m) => m.GastoModule),
+      },
     ],
   },
   {

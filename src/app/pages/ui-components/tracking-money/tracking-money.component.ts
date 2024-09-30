@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { GastosDTO } from 'src/app/services/baptiste/dto/gastos.dto';
 import { GastosService } from 'src/app/services/baptiste/gastos.service';
 import { SnackBarComponent } from 'src/app/snack-bar-component/snack-bar-component.component';
@@ -11,7 +12,7 @@ import { SnackBarComponent } from 'src/app/snack-bar-component/snack-bar-compone
 export class AppTrackingMoney implements OnInit {
   gastos: GastosDTO[] = [];
 
-  constructor(private gastosService: GastosService, private snackBar: MatSnackBar,) {}
+  constructor(private gastosService: GastosService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
     this.gastosService.getAllGastos().subscribe({
@@ -40,8 +41,9 @@ export class AppTrackingMoney implements OnInit {
   }
 
   // Logica para editar un gasto.
-  edit(/* gasto: any */){
-    console.log('Editando el siguiente gasto: ', /* gasto */);
+  edit(gasto: any){
+    this.router.navigate(['/gastos/update', gasto.ID]);
+    console.log('Editando el siguiente gasto: ', gasto);
   }
 
   // Nombre de cada columna en la tabla Gastos registrados.
