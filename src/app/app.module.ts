@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
+import { MatIconModule } from '@angular/material/icon';
+
 
 //Import all material modules
 import { MaterialModule } from './material.module';
@@ -47,6 +49,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TablerIconsModule.pick(TablerIcons),
     NgScrollbarModule,
     MatSnackBarModule,
+    MatIconModule
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
