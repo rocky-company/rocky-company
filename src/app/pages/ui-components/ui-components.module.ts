@@ -11,11 +11,6 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppBadgeComponent } from './badge/badge.component';
-import { AppChipsComponent } from './chips/chips.component';
-import { AppListsComponent } from './lists/lists.component';
-import { AppMenuComponent } from './menu/menu.component';
-import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppTrackingMoney } from './tracking-money/tracking-money.component';
 import { FormTrackingMoney } from './tracking-money/form-create/tracking-money.form.component';
@@ -34,11 +29,6 @@ import { GastoModule } from './gasto/gastos.module';
   ],
   declarations: [
     AppTrackingMoney,
-    AppBadgeComponent,
-    AppChipsComponent,
-    AppListsComponent,
-    AppMenuComponent,
-    AppTooltipsComponent,
     FormTrackingMoney,
   ],
 })

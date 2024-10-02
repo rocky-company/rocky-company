@@ -26,11 +26,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'extra',
-        loadChildren: () =>
-          import('./pages/extra/extra.module').then((m) => m.ExtraModule),
-      },
-      {
         path: 'gastos',
         loadChildren: () =>
           import('./pages/ui-components/gasto/gastos.module').then((m) => m.GastoModule),
@@ -40,15 +35,7 @@ const routes: Routes = [
   {
     path: '',
     component: BlankComponent,
-    children: [
-      {
-        path: 'authentication',
-        loadChildren: () =>
-          import('./pages/authentication/authentication.module').then(
-            (m) => m.AuthenticationModule
-          ),
-      },
-    ],
+    children: [],
   },
 ];
 

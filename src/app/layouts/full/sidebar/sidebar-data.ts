@@ -17,13 +17,4 @@ export const navItems: NavItem[] = [
     iconName: 'coins',
     route: '/ui-components/tracking-money',
   },
-
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
 ];
