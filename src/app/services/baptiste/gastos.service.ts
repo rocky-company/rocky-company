@@ -31,4 +31,10 @@ export class GastosService {
   getGastoByID(id: string): Observable<any> {
     return this.http.get<GastosDTO>(`${this.apiUrl}/${id}`);
   }
+
+  // Eliminar un gasto.
+  deleteGasto(id: string): Observable<any> {
+    console.log('id recibido: ',id)
+    return this.http.delete<string>(`${this.apiUrl}/delete/${id}`);
+  }
 }

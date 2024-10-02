@@ -43,7 +43,7 @@
           </td>
         </ng-container>
 
-        <!-- Project CostoDelGasto Column-->
+        <!-- CostoDelGasto Column-->
         <ng-container matColumnDef="CostoDelGasto">
           <th mat-header-cell *matHeaderCellDef>CostoDelGasto</th>
           <td mat-cell *matCellDef="let element">
@@ -85,9 +85,9 @@
             </button>
 
             <!-- Botón Eliminar -->
-            <!-- <button mat-icon-button color="warn" (click)="edit(element)">
+            <button mat-icon-button color="warn" (click)="deleteGasto(element.ID)">
               <mat-icon>delete</mat-icon>
-            </button> -->
+            </button>
           </td>
         </ng-container>
 

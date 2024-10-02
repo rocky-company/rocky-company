@@ -12,7 +12,11 @@ import { SnackBarComponent } from 'src/app/snack-bar-component/snack-bar-compone
 export class AppTrackingMoney implements OnInit {
   gastos: GastosDTO[] = [];
 
-  constructor(private gastosService: GastosService, private snackBar: MatSnackBar, private router: Router) {}
+  constructor(
+    private gastosService: GastosService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.gastosService.getAllGastos().subscribe({
@@ -37,13 +41,35 @@ export class AppTrackingMoney implements OnInit {
 
   // Escucha el evento onSubmit emitido desde el subcomponente y actualiza el arreglo de gastos
   onGastoAdded(newGasto: GastosDTO) {
-    this.gastos.push(newGasto);  // Añade el nuevo gasto al arreglo de gastos
+    this.gastos.push(newGasto); // Añade el nuevo gasto al arreglo de gastos
   }
 
-  // Logica para editar un gasto.
-  edit(gasto: any){
+  edit(gasto: any) {
     this.router.navigate(['/gastos/update', gasto.ID]);
-    console.log('Editando el siguiente gasto: ', gasto);
+  }
+
+  deleteGasto(id: string) {
+    this.gastosService.deleteGasto(id).subscribe({
+      next: (response) => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 3000,
+          data: {
+            message: `${response}`,
+          },
+        });
+
+        this.gastos = this.gastos.filter(gasto => gasto.ID !== +id);
+      },
+
+      error: (error) => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 10000,
+          data: {
+            message: `Error: ${error.message}`,
+          },
+        });
+      },
+    });
   }
 
   // Nombre de cada columna en la tabla Gastos registrados.
