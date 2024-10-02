@@ -6,7 +6,7 @@ export const GastoRoutes: Routes = [
     path: '',
     children: [
       {
-        path: 'update/:ID',
+        path: 'update/:id',
         component: GastoComponent,
       }
     ]

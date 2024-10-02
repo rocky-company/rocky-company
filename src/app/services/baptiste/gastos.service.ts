@@ -26,4 +26,9 @@ export class GastosService {
   updateGasto(gasto: GastosDTO): Observable<any> {
     return this.http.put<any>(this.apiUrl, gasto)
   }
+
+  // Consultar gasto por medio de su ID.
+  getGastoByID(id: string): Observable<any> {
+    return this.http.get<GastosDTO>(`${this.apiUrl}/${id}`);
+  }
 }

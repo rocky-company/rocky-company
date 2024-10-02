@@ -1,25 +1,26 @@
-<h1>EDITAR BETAAA</h1>
+<h1>Editando gasto</h1>
 <!--Formulario gastos.-->
 <mat-card class="cardWithShadow theme-card">
   <mat-card-header>
-    <mat-card-title class="m-b-0">Registrar un nuevo gasto.</mat-card-title>
+    <mat-card-title class="m-b-0">Editar gasto</mat-card-title>
   </mat-card-header>
 
-  <!-- <mat-card-content class="b-t-1">
-    <form (ngSubmit)="updateGasto()">
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="gastoForm" (ngSubmit)="guardarInformacion()">
       <div class="row">
+        <div class="col-lg-6" *ngIf="gastoForm.get('ID')?.value">
+          <mat-label class="f-w-600 m-b-8 d-block" for="ID">ID del gasto</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput id="ID" formControlName="ID" type="text" readonly />
+          </mat-form-field>
+        </div>
+
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="nombre"
-            >Nombre Del Gasto</mat-label
+          <mat-label class="f-w-600 m-b-8 d-block" for="Nombre"
+            >Nombre del gasto</mat-label
           >
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input
-              matInput
-              placeholder="Takis de fuego "
-              [(ngModel)]="newGasto.nombre"
-              name="nombre"
-              required
-            />
+            <input matInput id="Nombre" formControlName="Nombre" type="text" />
           </mat-form-field>
         </div>
 
@@ -27,57 +28,45 @@
           <mat-label class="f-w-600 m-b-8 d-block" for="CostoDelGasto"
             >Costo Del Gasto</mat-label
           >
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline" class="w-100" color="primary">
             <input
               matInput
+              id="CostoDelGasto"
+              formControlName="CostoDelGasto"
               type="number"
-              [(ngModel)]="newGasto.CostoDelGasto"
-              name="CostoDelGasto"
-              required
             />
           </mat-form-field>
         </div>
 
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block">Categoria</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select
-              [(ngModel)]="newGasto.Categoria"
-              name="Categoria"
-              placeholder="Comida "
-            >
-              @for(option of categoria; track option.value) {
-              <mat-option [value]="option.viewValue">{{
-                option.viewValue
-              }}</mat-option>
-              }
-            </mat-select>
+          <mat-label class="f-w-600 m-b-8 d-block" for="Categoria"
+            >Categoria
+          </mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              id="Categoria"
+              formControlName="Categoria"
+              type="text"
+            />
           </mat-form-field>
         </div>
 
         <div class="col-lg-6">
-          <mat-label class="f-w-600 m-b-8 d-block" for="Lugar">Lugar</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select
-              [(ngModel)]="newGasto.Lugar"
-              name="Lugar"
-              placeholder="Tiendas D1"
-            >
-              @for(option of lugar; track option.value) {
-              <mat-option [value]="option.viewValue">{{
-                option.viewValue
-              }}</mat-option>
-              }
-            </mat-select>
+          <mat-label class="f-w-600 m-b-8 d-block" for="Lugar"
+            >Lugar</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput id="Lugar" formControlName="Lugar" type="text" />
           </mat-form-field>
         </div>
       </div>
 
       <div class="m-t-12">
         <button mat-flat-button color="primary" class="m-r-8" type="submit">
-          Crear
+          Guardar
         </button>
       </div>
     </form>
-  </mat-card-content> -->
+  </mat-card-content>
 </mat-card>
