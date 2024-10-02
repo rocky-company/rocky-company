@@ -4,18 +4,15 @@ import { GastoDTO } from 'src/app/services/baptiste/dto/gasto.dto';
 import { GastosDTO } from 'src/app/services/baptiste/dto/gastos.dto';
 import { GastosService } from 'src/app/services/baptiste/gastos.service';
 import { SnackBarComponent } from 'src/app/snack-bar-component/snack-bar-component.component';
-
-// formulario gastos.
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { Categoria, Lugar } from './models/lugar.model';
 
 @Component({
   selector: 'app-tracking-money-form',
   templateUrl: './tracking-money.form.component.html',
 })
 export class FormTrackingMoney {
+categorias = Categoria;
+lugares = Lugar;
   constructor(
     private gastosService: GastosService,
     private snackBar: MatSnackBar
@@ -27,19 +24,7 @@ export class FormTrackingMoney {
     Categoria: '',
     Lugar: '',
   };
-  lugar: Food[] = [
-    { value: 'steak-0', viewValue: 'Tienda D1' },
-    { value: 'pizza-1', viewValue: 'Lider' },
-    { value: 'tacos-2', viewValue: 'Ara' },
-    { value: 'tacos-3', viewValue: 'Paso Lento' },
-  ];
 
-  categoria: Food[] = [
-    { value: 'steak-0', viewValue: 'Aseo' },
-    { value: 'pizza-1', viewValue: 'Comida' },
-    { value: 'tacos-2', viewValue: 'Galgerias' },
-    { value: 'tacos-3', viewValue: 'Rocky' },
-  ];
   @Output() onSubmit = new EventEmitter<any>();
 
   addNewGasto() {
@@ -90,6 +75,6 @@ export class FormTrackingMoney {
           data: { message: `Error editando el gasto. :(` },
         });
       },
-    })
+    });
   }
 }

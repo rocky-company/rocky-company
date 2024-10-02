@@ -45,7 +45,7 @@
               name="Categoria"
               placeholder="Comida "
             >
-              @for(option of categoria; track option.value) {
+              @for(option of categorias; track option.value) {
               <mat-option [value]="option.viewValue">{{
                 option.viewValue
               }}</mat-option>
@@ -62,7 +62,7 @@
               name="Lugar"
               placeholder="Tiendas D1"
             >
-              @for(option of lugar; track option.value) {
+              @for(option of lugares; track option.value) {
               <mat-option [value]="option.viewValue">{{
                 option.viewValue
               }}</mat-option>
