@@ -18,6 +18,7 @@ export const Lugar: LugarOCategoria[] = [
 ];
 
 export const Categoria: LugarOCategoria[] = [
+  { value: '1', viewValue: 'Necesidades basicas.' },
   { value: '1', viewValue: 'Aseo' },
   { value: '2', viewValue: 'Comida' },
   { value: '3', viewValue: 'Galgerias' },
@@ -28,4 +29,5 @@ export const Categoria: LugarOCategoria[] = [
   { value: '8', viewValue: 'Salud' },
   { value: '9', viewValue: 'Moto' },
   { value: '10', viewValue: 'Maquillaje' },
+  { value: '11', viewValue: 'Salidas o entretenimiento.' },
 ];
