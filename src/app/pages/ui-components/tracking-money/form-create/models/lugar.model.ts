@@ -15,10 +15,13 @@ export const Lugar: LugarOCategoria[] = [
   { value: '8', viewValue: 'Tienda barrio - empanadas2' },
   { value: '9', viewValue: 'Restaurante perros jr' },
   { value: '10', viewValue: 'Domicilio - little caesars' },
+  { value: '11', viewValue: 'Pagina web: Mi planilla' },
 ];
 
 export const Categoria: LugarOCategoria[] = [
   { value: '1', viewValue: 'Necesidades basicas.' },
+  { value: '1', viewValue: 'Facturas' },
+  { value: '1', viewValue: 'Seguridad Social' },
   { value: '1', viewValue: 'Aseo' },
   { value: '2', viewValue: 'Comida' },
   { value: '3', viewValue: 'Galgerias' },

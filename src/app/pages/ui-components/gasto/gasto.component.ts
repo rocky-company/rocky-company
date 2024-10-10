@@ -26,10 +26,10 @@ export class GastoComponent implements OnInit {
     // Inicializar el formulario antes de cargar los datos
     this.gastoForm = this.fb.group({
       ID: ['', Validators.required],
-      Nombre: ['', Validators.required], // Puedes agregar validaciones
-      CostoDelGasto: ['', Validators.required],
-      Categoria: ['', Validators.required],
-      Lugar: ['', Validators.required],
+      nombre: ['', Validators.required], // Puedes agregar validaciones
+      costo_del_gasto: ['', Validators.required],
+      categoria: ['', Validators.required],
+      lugar: ['', Validators.required],
       fecha_formateada: ['', Validators.required],
     });
 
@@ -50,10 +50,10 @@ export class GastoComponent implements OnInit {
     if (this.gasto) {
       this.gastoForm.patchValue({
         ID: this.gasto.ID,
-        Nombre: this.gasto.Nombre,
-        CostoDelGasto: this.gasto.CostoDelGasto,
-        Categoria: this.gasto.Categoria,
-        Lugar: this.gasto.Lugar,
+        nombre: this.gasto.nombre,
+        costo_del_gasto: this.gasto.costo_del_gasto,
+        categoria: this.gasto.categoria,
+        lugar: this.gasto.lugar,
         fecha: this.gasto.fecha_formateada,
       });
     }

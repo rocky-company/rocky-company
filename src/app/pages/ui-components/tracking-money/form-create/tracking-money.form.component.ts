@@ -20,9 +20,9 @@ lugares = Lugar;
 
   newGasto: GastoDTO = {
     nombre: '',
-    CostoDelGasto: 0,
-    Categoria: '',
-    Lugar: '',
+    costo_del_gasto: 0,
+    categoria: '',
+    lugar: '',
   };
 
   @Output() onSubmit = new EventEmitter<any>();
@@ -50,10 +50,10 @@ lugares = Lugar;
 
   editGasto: GastosDTO = {
     ID: 0,
-    Nombre: '',
-    CostoDelGasto: 0,
-    Categoria: '',
-    Lugar: '',
+    nombre: '',
+    costo_del_gasto: 0,
+    categoria: '',
+    lugar: '',
   };
 
   @Output() editar = new EventEmitter<any>();
